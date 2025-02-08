@@ -1,20 +1,33 @@
+import CustomInput from "@/components/CustomInput";
 import { Ionicons } from "@expo/vector-icons";
+import { useState } from "react";
 import {Button, Text, TextInput, TouchableOpacity, View, StyleSheet } from "react-native";
 
-interface HomeScreenProps{
-    user: {email: string; password: string},
-    onLogout: () => void;
-}
-
-export default function HomeScreen({user, onLogout}: HomeScreenProps){
+export default function HomeScreen(){
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
 
     return(
         <View style={styles.container}>
-            <View style={styles.header}>
-                <TouchableOpacity>
-                <Ionicons style={styles.headerIcon} name="home-outline" size={32} color="#fff"/>
-                <Text style={styles.headerText}>Bienvenido {user.email}</Text>
-                </TouchableOpacity>
+           <View style={styles.content}>
+            <CustomInput
+            label="Correo Electronico"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            validationRule={(text) => text.includes('@')}
+            errorMessage="Correo invalido"
+            />
+
+            <CustomInput
+            label="Contraseña"
+            value={password}
+            onChangeText={setPassword}
+            keyboardType="default"
+            //validationRule={(text) => text.includes('@')}
+            errorMessage="Contraseña invalido"
+            secureTextEntry={true}
+            />
             </View>
         </View>
 
@@ -26,7 +39,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#4C6EF5',
     },
-
+    content:{
+        backgroundColor: '#fff',
+    },
     header:{
         backgroundColor: '364FC7',
         flexDirection: 'row',

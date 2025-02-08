@@ -22,6 +22,7 @@ export default function RootLayout() {
       SplashScreen.hideAsync();
       //router.push('/registration');
       //router.replace("/registration")
+
     }
   }, [loaded]);
 
