@@ -12,11 +12,11 @@ export default function HomeScreen(){
     const [scaleInventory] = useState (new Animated.Value(1));
     const [scaleLogout] = useState (new Animated.Value(1));
 
-    const handlePressIn = (scale) => {
+    const handlePressIn = (scale: Animated.Value) => {
         Animated.timing(scale,{toValue: 0.95, duration: 100, useNativeDriver: true}).start();
     };
 
-    const handlePressOut = (scale) =>{
+    const handlePressOut = (scale: Animated.Value) =>{
         Animated.timing(scale,{toValue: 1, duration: 100, useNativeDriver: true}).start();
     };
 
